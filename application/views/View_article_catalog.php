@@ -24,7 +24,12 @@
                                      Keterangan : <?php echo word_limiter($article_catalog["description"],30); ?>
                                 </p>
 
+<<<<<<< HEAD
                                 <a href="<?php echo base_url(); ?>tentang/detail/<?php echo strtolower(str_replace(' ','-',preg_replace("/[^a-zA-Z0-9\s]/", "", $article_catalog['id_catalog']).'-'.$article_catalog['title'])); ?>" class="text-capitalize ">
+=======
+                              
+                               <a href="<?php echo base_url(); ?>tentang/detail/<?php echo strtolower(str_replace(' ','-',preg_replace("/[^a-zA-Z0-9\s]/", "", $article_catalog['id_catalog']).'-'.$article_catalog['title'])); ?>" class="text-capitalize ">
+>>>>>>> a92243db22bf30082d8b4da91c4bdf7d5d0092ba
                                     read more
                                     <span><i class="fa fa-angle-double-right"></i> </span>
                                 </a>          
