@@ -1,149 +1,114 @@
 <!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
-    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <title><?php echo $title?></title>
+<html class="backend">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+        <meta name="author" content="pampersdry.info">
+        <meta name="description" content="Adminre is a clean and flat backend and frontend theme build with twitter bootstrap">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+        <link rel="shortcut icon" href="<?php echo base_url("media/files/logo.jpg"); ?>">
+      <title><?php echo $title?></title>
     <!-- Favicon-->
     <!-- Google Fonts -->
           <link rel="shortcut icon" href="<?php echo base_url(); ?>assets/foto/ecclesialogo.jpg">
+        <link rel="apple-touch-icon-precomposed" sizes="144x144" href="<?php echo base_url(); ?>assets/backend/image/touch/apple-touch-icon-144x144-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="<?php echo base_url(); ?>assets/backend/image/touch/apple-touch-icon-114x114-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="<?php echo base_url(); ?>assets/backend/image/touch/apple-touch-icon-72x72-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" href="<?php echo base_url(); ?>assets/backend/image/touch/apple-touch-icon-57x57-precomposed.png">
+      <!--/ END META SECTION -->
+        <link rel="stylesheet" href="<?php echo base_url(); ?>assets/backend/plugins/selectize/css/selectize.css">
+        <link rel="stylesheet" href="<?php echo base_url(); ?>assets/backend/plugins/flot/css/flot.css">
+        <link rel="stylesheet" href="<?php echo base_url(); ?>assets/backend/stylesheet/bootstrap.css">
+        <link rel="stylesheet" href="<?php echo base_url(); ?>assets/backend/stylesheet/layout.css">
+        <link rel="stylesheet" href="<?php echo base_url(); ?>assets/backend/stylesheet/uielement.css">
+        <script type="text/javascript" src="<?php echo base_url(); ?>assets/backend/javascript/vendor.js"></script>  
+        <link rel="stylesheet" href="<?php echo base_url(); ?>assets/backend/stylesheet/themes/theme4.css">  
+        <script type="text/javascript" src="<?php echo base_url(); ?>assets/backend/plugins/modernizr/js/modernizr.js"></script>
+        <link rel="stylesheet" href="<?php echo base_url(); ?>assets/backend/plugins/datatables/css/datatables.css">
+        <link rel="stylesheet" href="<?php echo base_url(); ?>assets/backend/plugins/datatables/css/tabletools.css">
+            
+ <script type="text/javascript">
+    //set timezone
+    <?php date_default_timezone_set('Asia/Jakarta'); ?>
+    //buat object date berdasarkan waktu di server
+    var serverTime = new Date(<?php print date('Y, m, d, H, i, s, 0'); ?>);
+    //buat object date berdasarkan waktu di client
+    var clientTime = new Date();
+    //hitung selisih
+    var Diff = serverTime.getTime() - clientTime.getTime();    
+    //fungsi displayTime yang dipanggil di bodyOnLoad dieksekusi tiap 1000ms = 1detik
+    function displayServerTime(){
+        //buat object date berdasarkan waktu di client
+        var clientTime = new Date();
+        //buat object date dengan menghitung selisih waktu client dan server
+        var time = new Date(clientTime.getTime() + Diff);
+        //ambil nilai jam
+        var sh = time.getHours().toString();
+        //ambil nilai menit
+        var sm = time.getMinutes().toString();
+        //ambil nilai detik
+        var ss = time.getSeconds().toString();
+        //tampilkan jam:menit:detik dengan menambahkan angka 0 jika angkanya cuma satu digit (0-9)
+        document.getElementById("clock").innerHTML = (sh.length==1?"0"+sh:sh) + ":" + (sm.length==1?"0"+sm:sm) + ":" + (ss.length==1?"0"+ss:ss);
+    }
+</script>
+  <body onload="setInterval('displayServerTime()', 1000); ">
 
-    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
-  <!--   <link href='<?php base_url(); ?>temp/source/font.css' rel='stylesheet' type='text/css'>
-   <link href='<?php base_url(); ?>temp/source/material.css' rel='stylesheet' type='text/css'> -->
-    <link href="<?php echo base_url(); ?>temp/plugins/bootstrap/css/bootstrap.css" rel="stylesheet">
-    <link href="<?php echo base_url(); ?>temp/plugins/node-waves/waves.css" rel="stylesheet" />
-    <link href="<?php echo base_url(); ?>temp/plugins/animate-css/animate.css" rel="stylesheet" />
-    <link href="<?php echo base_url(); ?>temp/plugins/bootstrap-colorpicker/css/bootstrap-colorpicker.css" rel="stylesheet" />
-    <link href="<?php echo base_url(); ?>temp/plugins/dropzone/dropzone.css" rel="stylesheet">
-    <link href="<?php echo base_url(); ?>temp/plugins/multi-select/css/multi-select.css" rel="stylesheet">
-    <link href="<?php echo base_url(); ?>temp/plugins/jquery-spinner/css/bootstrap-spinner.css" rel="stylesheet">
-    <link href="<?php echo base_url(); ?>temp/plugins/bootstrap-tagsinput/bootstrap-tagsinput.css" rel="stylesheet">
-    <link href="<?php echo base_url(); ?>temp/plugins/bootstrap-select/css/bootstrap-select.css" rel="stylesheet" />
-     <link href="<?php echo base_url(); ?>temp/plugins/morrisjs/morris.css" rel="stylesheet" />
-    <link href="<?php echo base_url(); ?>temp/plugins/nouislider/nouislider.min.css" rel="stylesheet" />
-    <link href="<?php echo base_url(); ?>temp/plugins/morrisjs/morris.css" rel="stylesheet" />
-    <link href="<?php echo base_url(); ?>temp/plugins/jquery-datatable/skin/bootstrap/css/dataTables.bootstrap.css" rel="stylesheet">
-    <link href="<?php echo base_url(); ?>temp/css/style.css" rel="stylesheet">
-    <link href="<?php echo base_url(); ?>temp/css/themes/all-themes.css" rel="stylesheet" />
-    <link href="<?php echo base_url(); ?>temp/plugins/bootstrap-material-datetimepicker/css/bootstrap-material-datetimepicker.css" rel="stylesheet" />
-    <link href="<?php echo base_url(); ?>temp/plugins/waitme/waitMe.css" rel="stylesheet" />
-    <script src="<?php echo base_url(); ?>temp/plugins/jquery/jquery.min.js"></script>
-    <style>
-      *{
-      padding: 0;margin: 0;
-      }
-      a{
-      text-decoration: none;
-      color: #333;
-      }
-      body{
-      font-family: 'verdana', verdana;
-      }
-      iframe{
-      margin: 20px 0;
-      }
-      h1{
-      }
-      h2{
-      p{
-      margin:10px 0;
-      }
-      #loading {
-      position: fixed;
-      left: 0px;
-      top: 0px;
-      width: 100%;
-      height: 100%;
-      z-index: 9999;
-      background: url(<?php echo base_url('assets/loader/loading.gif'); ?>) 50% 50% no-repeat #fff;
-      }
-      .container{
-      width: 730px;
-      margin: 0 auto;
-      padding: 20px;
-      background: #fff;
-      }
-      header{
-       
-      }
-      .content img{
-      width: 240px;
-      height: 200px;
-      }
-      </style> 
-         <script type="text/javascript">
-        $(window).load(function() { $("#loading").fadeOut("slow"); })
-    </script>
-   <script language=JavaScript>
-    var message = "Maaf ,semua sumber di aplikasi ini dilindungi.";
- function rtclickcheck(keyp){ if (navigator.appName == "Netscape" && keyp.which == 3){ alert(message); return false; }
-    if (navigator.appVersion.indexOf("MSIE") != -1 && event.button == 2) { alert(message); return false; } }
-    document.onmousedown = rtclickcheck;
-</script> 
- 
-</head>
-<body class="theme-red">
-  
-   <!-- Page Loader -->
-  <!--  <div class="page-loader-wrapper">
-        <div class="loader">
-            <div class="preloader">
-                <div class="spinner-layer pl-red">
-                    <div class="circle-clipper left">
-                        <div class="circle"></div>
-                    </div>
-                    <div class="circle-clipper right">
-                        <div class="circle"></div>
-                    </div>
-                </div>
-            </div>
-            <p>Silahkan Tunggu...</p>
-        </div>
-    </div>  -->
-    <!-- #END# Page Loader -->
-    <!-- Overlay For Sidebars -->
-    <div class="overlay"></div>
-    <nav class="navbar">
-        <div class="container-fluid">
+        <header id="header" class="navbar">
             <div class="navbar-header">
-                <a href="javascript:void(0);" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false"></a>
-                <a href="javascript:void(0);" class="bars"></a>
-                <a href="<?php echo base_url("backend"); ?>"> <img src="<?php echo base_url(); ?>assets/foto/CRIST.png" width="50" height="50"> <font color="white" size="4"> <strong>Ecclesia Administrator</strong></font></a>
+                 <a href="<?php echo base_url("backend/kontent"); ?>"><img src="<?php echo base_url(); ?>assets/foto/CRIST.png" width="51" height="52"> <font color="white" size="3"> &nbsp;<strong>Ecclesia Administrator</strong></font></a>
             </div>
-            <div class="collapse navbar-collapse" id="navbar-collapse">
-                <ul class="nav navbar-nav navbar-right">
+            <div class="navbar-toolbar clearfix">
+                 <ul class="nav navbar-nav navbar-left">
+                    <li class="hidden-xs hidden-sm">
+                        <a href="javascript:void(0);" class="sidebar-minimize" data-toggle="minimize" title="Minimize sidebar">
+                            <span class="meta">
+                                <span class="icon"></span>
+                            </span>
+                        </a>
+                    </li>
+                    <li class="navbar-main hidden-lg hidden-md hidden-sm">
+                        <a href="javascript:void(0);" data-toggle="sidebar" data-direction="ltr" rel="tooltip" title="Menu sidebar">
+                            <span class="meta">
+                                <span class="icon"><i class="ico-paragraph-justify3"></i></span>
+                            </span>
+                        </a>
+                    </li>
+                        
+                        <script class="mustache-template" type="x-tmpl-mustache">
+                        
+                            {{#data}}
+                            <a href="javascript:void(0);" class="media border-dotted new">
+                                <span class="media-object pull-left">
+                                    <i class="{{icon}}"></i>
+                                </span>
+                                <span class="media-body">
+                                    <span class="media-text">{{{text}}}</span>
+                                    <span class="media-meta pull-right">{{meta.time}}</span>
+                                </span>
+                            </a>
+                            {{/data}}
+                        
+                        </script>
+                       
+                                </div>
+                            </div>
+                        </div>
+                    </li>  
+                    </li>
                 </ul>
             </div>
-        </div>
-    </nav>
-    <!-- #Top Bar -->
-    <section>
-        <!-- Left Sidebar -->
-        <aside id="leftsidebar" class="sidebar">
-            <!-- User Info -->
-            <div class="user-info">
-                <div class="image">
-                    <img src="<?php echo base_url(); ?>assets/foto/<?php echo $pengguna->foto; ?>" width="48" height="48" alt="User" />
-                </div>
-                <div class="info-container">
-                    <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><font color="black"><strong><?php echo $pengguna->nama; ?></strong></font></div>
-                    <div class="level"><font color="black"><strong>Status Login : 
-                  <?php if($pengguna->level_login == 1)
-                  {
-                  echo "Administrator";
-                  }
-                   ?>
-                    </strong>
-                  </font></div>
-                </div>
-            </div>
-            <div class="menu">
-                <ul class="list">
-                    <li class="header">MAIN NAVIGATION</li>
-                      <li  class="active open">
+        </header>
+        <!--/ END Template Header -->
+
+        <!-- START Template Sidebar (Left) -->
+        <aside class="sidebar sidebar-left sidebar-menu">
+            <!-- START Sidebar Content -->
+             <section class="content slimscroll">
+                <h5 class="heading">Main Menu</h5>
+                <ul class="topmenu topmenu-responsive" data-toggle="menu">
+                  <li  class="active open">
                         <a href="<?php echo base_url('backend/kontent'); ?>" data-target="#dashboard" data-toggle="submenu" data-parent=".topmenu">
                             <span class="figure"><i class="ico-dashboard2"></i></span>
                             <span class="text">Dashboard</span>
@@ -219,60 +184,72 @@
                        
                         <!--/ END 2nd Level Menu -->
                     </li>
-                    
-                </ul>
-            </div>
-            <!-- #Menu -->
-            <!-- Footer -->
-            <div class="legal">
-                <div class="copyright">
-                    &copy; <?php echo date('Y'); ?> <a href="javascript:void(0);">ECCLESIA</a>.
-                </div>
-                <div class="version"> <span  class="footer-right">Halaman ini dimuat selama <strong>{elapsed_time}</strong> detik.</br>
-                  <b> Engine  </b> <?php echo  (ENVIRONMENT === 'development') ?  'CodeIgniter Version <strong>' . CI_VERSION . '</strong>' : '' ?> </span>
+                   
                   
+                   
+                </ul>
+            </section>
+        </aside>
+        <footer id="footer">
+            <!-- START container-fluid -->
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <!-- copyright -->
+                        <p class="nm text-muted">&copy; Copyright <?php echo date('Y'); ?> by <a href="javascript:void(0);" class="semibold"> Ecclesia Foundation</a>. All Rights Reserved.</p>
+                        <!--/ copyright -->
+                    </div>
+                    <!-- <div class="col-sm-6 text-right hidden-xs">
+                        <a href="javascript:void(0);" class="semibold">Privacy Policy</a>
+                        <span class="ml5 mr5">&#8226;</span>
+                        <a href="javascript:void(0);" class="semibold">Terms of Service</a>
+                    </div> -->
                 </div>
             </div>
-            <!-- #Footer -->
-        </aside>
-    </section>
+            <!--/ END container-fluid -->
+        </footer>
+        <!-- START Template Main -->
+        <section id="main" role="main">
+            <div class="container-fluid">
+                <div class="page-header page-header-block">
+                    <div class="page-header-section">
+                        <h4 class="title semibold"><?php echo $title; ?></h4>
+                    </div>
+                    <div class="page-header-section">
+                        <div class="toolbar">
+                            <ol class="breadcrumb breadcrumb-transparent nm">
+                                <li><a href="<?php echo base_url(); ?>">HOME</a></li>
+                                <li ><?php echo $title; ?></li>
+                            </ol>
+                        </div>
+                    </div>
+                </div> 
+            <?php $this->load->view($main);?>
+            </div> 
+            <a href="#" class="totop animation" data-toggle="waypoints totop" data-showanim="bounceIn" data-hideanim="bounceOut" data-offset="50%"><i class="ico-angle-up"></i></a>
+        </section>
+        <!--/ END Template Main -->
 
-    <section class="content">         
-     <?php $this->load->view($main);?>
-    
-    </section>
-    <script src="<?php echo base_url(); ?>temp/plugins/autosize/autosize.js"></script>
-    <script src="<?php echo base_url(); ?>temp/plugins/momentjs/moment.js"></script>
-    <script src="<?php echo base_url(); ?>temp/plugins/bootstrap-material-datetimepicker/js/bootstrap-material-datetimepicker.js"></script>
-    <script src="<?php echo base_url(); ?>temp/js/pages/forms/basic-form-elements.js"></script>
-    <script src="<?php echo base_url(); ?>temp/plugins/jquery-slimscroll/jquery.slimscroll.js"></script>
-    <script src="<?php echo base_url(); ?>temp/plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.js"></script>
-    <script src="<?php echo base_url(); ?>temp/plugins/dropzone/dropzone.js"></script>
-    <script src="<?php echo base_url(); ?>temp/plugins/jquery-inputmask/jquery.inputmask.bundle.js"></script>
-    <script src="<?php echo base_url(); ?>temp/plugins/multi-select/js/jquery.multi-select.js"></script>
-    <script src="<?php echo base_url(); ?>temp/plugins/jquery-spinner/js/jquery.spinner.js"></script>
-    <script src="<?php echo base_url(); ?>temp/plugins/bootstrap-tagsinput/bootstrap-tagsinput.js"></script>
-    <script src="<?php echo base_url(); ?>temp/plugins/nouislider/nouislider.js"></script>
-    <script src="<?php echo base_url(); ?>temp/plugins/node-waves/waves.js"></script>
-    <script src="<?php echo base_url(); ?>temp/plugins/jquery-datatable/jquery.dataTables.js"></script>
-    <script src="<?php echo base_url(); ?>temp/plugins/jquery-datatable/skin/bootstrap/js/dataTables.bootstrap.js"></script>
-    <script src="<?php echo base_url(); ?>temp/plugins/jquery-datatable/extensions/export/dataTables.buttons.min.js"></script>
-    <script src="<?php echo base_url(); ?>temp/plugins/jquery-datatable/extensions/export/buttons.flash.min.js"></script>
-    <script src="<?php echo base_url(); ?>temp/plugins/jquery-datatable/extensions/export/jszip.min.js"></script>
-    <script src="<?php echo base_url(); ?>temp/plugins/jquery-datatable/extensions/export/pdfmake.min.js"></script>
-    <script src="<?php echo base_url(); ?>temp/plugins/jquery-datatable/extensions/export/vfs_fonts.js"></script>
-    <script src="<?php echo base_url(); ?>temp/plugins/jquery-datatable/extensions/export/buttons.html5.min.js"></script>
-    <script src="<?php echo base_url(); ?>temp/plugins/jquery-datatable/extensions/export/buttons.print.min.js"></script>
-    <script src="<?php echo base_url(); ?>temp/js/admin.js"></script>
-    <script src="<?php echo base_url(); ?>temp/js/pages/forms/advanced-form-elements.js"></script>
-    <script src="<?php echo base_url(); ?>temp/js/pages/tables/jquery-datatable.js"></script>
-    <script src="<?php echo base_url(); ?>temp/js/demo.js"></script>
-
-
-    <script src="<?php echo base_url(); ?>temp/plugins/raphael/raphael.min.js"></script>
-    <script src="<?php echo base_url(); ?>temp/plugins/morrisjs/morris.js"></script>
-    <script src="<?php echo base_url(); ?>temp/js/admin.js"></script>
-    <script src="<?php echo base_url(); ?>temp/js/pages/charts/morris.js"></script>
-</body>
-
+      <script type="text/javascript" src="<?php echo base_url(); ?>assets/backend/javascript/core.js"></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?>assets/backend/javascript/backend/app.js"></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?>assets/backend/plugins/prettify/js/prettify.js"></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?>assets/backend/javascript/backend/components/typography.js"></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?>assets/backend/javascript/backend/tables/default.js"></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?>assets/backend/plugins/datatables/js/jquery.dataTables.js"></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?>assets/backend/plugins/datatables/tabletools/js/dataTables.tableTools.js"></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?>assets/backend/plugins/datatables/js/datatables-bs3.js"></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?>assets/backend/javascript/backend/tables/datatable.js"></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?>assets/backend/plugins/selectize/js/selectize.js"></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?>assets/backend/plugins/flot/js/jquery.flot.js"></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?>assets/backend/plugins/flot/js/jquery.flot.resize.js"></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?>assets/backend/plugins/flot/js/jquery.flot.categories.js"></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?>assets/backend/plugins/flot/js/jquery.flot.time.js"></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?>assets/backend/plugins/flot/js/jquery.flot.tooltip.js"></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?>assets/backend/plugins/flot/js/jquery.flot.spline.js"></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?>assets/backend/javascript/backend/tables/default.js"></script>
+        <script src="<?php echo base_url();?>assets/theme/js/highcharts.js"></script>
+        <script src="<?php echo base_url();?>assets/theme/js/exporting.js"></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?>assets/backend/plugins/prettify/js/prettify.js"></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?>assets/backend/javascript/backend/components/typography.js"></script>
+    </body>
 </html>
