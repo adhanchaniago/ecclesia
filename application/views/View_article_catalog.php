@@ -23,7 +23,7 @@
                                 </p>
 
                               
-                               <a href="<?php echo base_url(); ?>catalog/detail/<?php echo strtolower(str_replace(' ','-',preg_replace("/[^a-zA-Z0-9\s]/", "", $article_catalog['id_catalog']).'-'.$article_catalog['title'])); ?>" class="text-capitalize ">
+                               <a href="<?php echo base_url(); ?>tentang/detail/<?php echo strtolower(str_replace(' ','-',preg_replace("/[^a-zA-Z0-9\s]/", "", $article_catalog['id_catalog']).'-'.$article_catalog['title'])); ?>" class="text-capitalize ">
                                     read more
                                     <span><i class="fa fa-angle-double-right"></i> </span>
                                 </a>                         
