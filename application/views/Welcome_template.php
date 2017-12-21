@@ -7,7 +7,7 @@
 <html class="no-js"> <!--<![endif]-->
     <head>
 
-       <title>PANTI ASUHAN ECCLESIA</title>
+    <title>PANTI ASUHAN ECCLESIA</title>
 
         <!-- meta -->
         <meta charset="utf-8">
@@ -62,27 +62,27 @@
                   <div class="collapse navbar-collapse" id="main-nav-collapse">
                         <ul class="nav navbar-nav navbar-right text-uppercase">
                             <li>
-                                <a href="<?php echo base_url(); ?>"><span>Home</span></a>
+                                <a class="btn btn-info" href="<?php echo base_url(); ?>"><span><font color="white"><strong>Home</font></strong></span></a>
                             </li>
 
                           
                             <li>
-                                <a href="<?php echo base_url('profil'); ?>"><span>Profil</span></a>
+                                <a class="btn btn-default" href="<?php echo base_url('profil'); ?>"><span>Profil</span></a>
                             </li>
                              <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span>Tentang Kami</span></a>
+                                <a class="btn btn-default" href="#" class="dropdown-toggle" data-toggle="dropdown"><span>Tentang Kami</span></a>
                                 <ul class="dropdown-menu">
                                    <?php foreach($category_catalog as $category_catalog){ ?>   
                                     <li>
-                                        <a href="<?php echo base_url(); ?>tentang/index/<?php echo $category_catalog['id_category']; ?>"><?php echo $category_catalog["category"]; ?></a>
+                                        <a class="btn btn-default" href="<?php echo base_url(); ?>tentang/detail/<?php echo strtolower(str_replace(' ','-',preg_replace("/[^a-zA-Z0-9\s]/", "", $category_catalog['id_category']).'-'.$category_catalog['category'])); ?>"><?php echo $category_catalog["category"]; ?></a>
                                     </li>
                                     <?php } ?>
                                 </ul>  <!-- end of /.dropdown-menu -->
                             </li><li>
-                                <a href="<?php echo base_url('article'); ?>"><span>Berita</span></a>
+                                <a class="btn btn-default" href="<?php echo base_url('article'); ?>"><span>Berita</span></a>
                             </li>
                             <li>
-                                <a href="<?php echo base_url('faq'); ?>"><span>Kontak Kami</span></a>
+                                <a class="btn btn-default" href="<?php echo base_url('faq'); ?>"><span>Kontak Kami</span></a>
                             </li>
                         </ul>
                     </div><!-- nav links -->
@@ -101,7 +101,7 @@
                            <div class="welcome-speech">
                             <h1><font color="white">Selamat Datang Di Panti Asuhan Ecclesia Sumatera Utara - Medan</font></h1>
                             <p><font color="yellow">Mari melihat kami lebih dalam...</font></p>
-                            <a href="<?php echo base_url('profil'); ?>" class="btn btn-white">
+                            <a class="btn btn-danger" href="<?php echo base_url('profil'); ?>" class="btn btn-white">
                                Read more
                             </a>
                         </div><!-- /.intro -->
@@ -135,9 +135,9 @@
                             <h4>Useful Links</h4>
                             <ul class="row footer-links">
                                 <div class="col-md-6 col-sm-6 col-xs-6">
-                                    <li><a href="https://www.facebook.com/samuel.sitanggang.7587" target="_blank">Facebook Pengurus</a></li>
-                                      <li><a href="https://www.facebook.com/pdtssitanggang.sth" target="_blank">Facebook Yayasan</a></li>
-                                    <li><a href="https://www.instagram.com/panti_asuhan_ecclesia" target="_blank">Instagram</a></li>
+                                    <li><a href="https://www.facebook.com/samuel.sitanggang.7587" class="btn btn-info" target="_blank"><font color="white">Facebook Pengurus</font></a></li>
+                                      <li><a href="https://www.facebook.com/pdtssitanggang.sth" class="btn btn-success" target="_blank"><font color="white">Facebook Yayasan</font></a></li>
+                                    <li><a href="https://www.instagram.com/panti_asuhan_ecclesia" class="btn btn-danger" target="_blank"><font color="white">Instagram</font></a></li>
                                 </div>
                             </ul>
                         </div>
@@ -153,7 +153,7 @@
                                 <div class="col-md-8 col-sm-4 col-xs-6">
                                     <div class="row">
                                         <p class="text-capitalize">
-                                            <a href="#">
+                                            <a href="<?php echo base_url(); ?>article/detail/<?php echo strtolower(str_replace(' ','-',preg_replace("/[^a-zA-Z0-9\s]/", "", $recent['id_article']).'-'.$recent['title'])); ?>">
                                                 <?php echo $recent["title"]; ?>
                                             </a>
                                         </p>
@@ -178,7 +178,7 @@
                                 </span>
                                
                             </div> <?php } ?>
-                            <p><font color="white"><i>Email tidak akan ditampilkan</i></font></p>
+                            <p><font color="white"><i><code>Email tidak akan ditampilkan</code></i></font></p>
                         </div> <!-- /.footer-widget -->
 
                         <!-- about avada agency -->

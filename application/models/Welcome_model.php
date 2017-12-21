@@ -7,7 +7,7 @@ class Welcome_model extends CI_Model
         $query = $this->db->query($sql);
         return $query->result_array();
     } function list_catalog_id($id_category){
-        return $this->db->query("select catalog.id_category,catalog.category,catalog.id_category,catalog.id_category,catalog.title,
+        return $this->db->query("select catalog.id_category,catalog.category,catalog.id_category,catalog.id_categorycatalog.title,
         catalog.foto,catalog.status from catalog left join category_catalog
         on catalog.id_category=catalog.id_category where catalog.id_category='$id_category' and status=1 group by catalog.id_category,category.category order by catalog.id_catalog desc");
     }
@@ -23,10 +23,21 @@ class Welcome_model extends CI_Model
     } 
     function show_article(){
         return $this->db->query("select * from article where status=1 order by id_article desc");
+    }function show_article_by_month(){
+        return $this->db->query("select distinct month(date_post) as bulannya,year(date_post) as tahunnya from article where status=1 order by month(date_post) asc");
     } function show_article_recent(){
         return $this->db->query("select * from article where status=1 order by id_article desc limit 3");
     }function Get_detail_article($where = ''){
         return $this->db->query("select * from article $where;");
+    }/*function Get_article_by_month($bulan,$tahun){
+        return $this->db->query("select id_article,id_category,title,description,foto,status,author,counter,month(date_post) as bulan,year(date_post)as tahun from article
+    where status=1 and month(date_post)='$bulan' and year(date_post)='$tahun' group by id_article,id_category,title,description,foto,status,author,counter,bulan,tahun");
+    }*/
+     function get_article_by_archive_list($bulan = '',$tahun = '',$limit, $start)
+    {
+        $sql = 'select id_article,date_post,id_category,title,description,author,status,counter,foto,day(article.date_post) as tanggal ,month(article.date_post) as bulan ,year(article.date_post) as tahun from article where month(article.date_post)='.$bulan.' and year(article.date_post)='.$tahun.' and status=1 order by id_category desc limit ' . $start . ', ' . $limit;
+        $query = $this->db->query($sql);
+        return $query->result_array();
     }function catalog_detail($where = ''){
         return $this->db->query("select * from catalog $where;");
     }

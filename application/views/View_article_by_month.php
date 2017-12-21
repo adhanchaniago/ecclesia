@@ -1,37 +1,51 @@
- <section class="blog-content">
+
+            <section class="blog-content">
                 <div class="container">
                     <div class="row">
                         <main class="col-md-9" style="display: block;">
                           <?php
-                                foreach($article_category as $article_category){
+                                if(empty($article_by_monthnya))
+                                    {
+                                     echo " <div class='alert alert-danger'>
+                                        <button type='button' class='close' data-dismiss='alert'>&times;</button>
+                                     <i class='fa fa-ban-circle'></i><strong><p align='center'>KONTENT BELUM TERSEDIA.</p></strong> 
+                               </div>";
+                            }else{ ?><?php
+                                foreach($article_by_monthnya as $article_by_month){
+                                    $join_datenya = $article_by_month["bulan"].$article_by_month["tahun"];
                                  ?>
                             <article class="blog-item">
-                                <img weight="300" width="100%" src="<?php echo base_url(); ?>assets/foto/<?php echo $article_category["foto"]; ?>">
+                                <img class="img-responsive center-block" src="<?php echo base_url(); ?>assets/foto/<?php echo $article_by_month["foto"]; ?>" alt="blog-item1">
                                 <div class="blog-heading">
-                                    <h3 class="text-capitalize"><?php echo $article_category["title"]; ?></h3>
-                                    <span class="date"><?php echo $article_category["date_post"]; ?></span>
-                                    <span><?php echo $article_category["author"]; ?></span>
-                                </div>  
+                                    <h3 class="text-capitalize">Judul : <?php echo $article_by_month["title"]; ?></h3>
+                                    <span class="date"> <?php  echo date('M-Y', strtotime( $join_datenya));  ?></span>
+                                </div>
                                 <p>
-                                   <?php echo word_limiter($article_category["description"],30); ?>
+                                     Keterangan : <?php echo word_limiter($article_by_month["description"],30); ?>
                                 </p>
 
-                              
-                               <a  class="btn btn-default" href="<?php echo base_url(); ?>article/detail/<?php echo strtolower(str_replace(' ','-',preg_replace("/[^a-zA-Z0-9\s]/", "", $article_category['id_article']).'-'.$article_category['title'])); ?>" class="text-capitalize ">
+                                <a href="<?php echo base_url(); ?>tentang/detail/<?php echo strtolower(str_replace(' ','-',preg_replace("/[^a-zA-Z0-9\s]/", "", $article_by_month['id_article']).'-'.$article_by_month['title'])); ?>" class="text-capitalize ">
                                     read more
                                     <span><i class="fa fa-angle-double-right"></i> </span>
-                                </a>                         
-                            </article>
-                              <?php } ?> 
+                                </a>          
+                            </article> <!-- /.blog-item -->
+                          <?php }} ?> 
                                <div class="row">
                                 <div class= "col-md-6 col-md-offset-3 text-center">
-                                    <ul class="pagination">
-                                       <li><?php echo $pagination; ?></li>
-                                    </ul> <!-- /.pagination -->
+                                     <!-- /.pagination -->
                                 </div>
-                            </div>    
+                            </div>
+                            
                         </main>
-                    <aside class="col-md-3">
+
+
+                        <!-- begin sidebar -->
+                        <aside class="col-md-3">
+
+                            <!-- begin twitter widget -->
+                          
+
+
                             <!-- begin tab-widget -->
                             <div class="tab-widget">
                                 <h4>Tab Widget</h4>
@@ -63,7 +77,14 @@
                                    
                                             <div class="popular-post">
                                                 <img src="<?php echo base_url(); ?>assets/foto/<?php echo $article["foto"];?>" class="img-responsive center-block" alt="<?php echo $article["title"];?>">
-                                                <h5 class="post-widget-heading"><a href="<?php echo base_url(); ?>article/detail/<?php echo strtolower(str_replace(' ','-',preg_replace("/[^a-zA-Z0-9\s]/", "", $article['id_article']).'-'.$article['title'])); ?>"><?php echo $article["title"];?> <span><i class="fa fa-angle-double-right"></i> </span></a></h5>
+                                                <h5 class="post-widget-heading"><a href="<?php echo base_url(); ?>tentang/detail/<?php echo strtolower(str_replace(' ','-',preg_replace("/[^a-zA-Z0-9\s]/", "", $article['id_article']).'-'.$article['title'])); ?>"><?php echo $article["title"];?> <span><i class="fa fa-angle-double-right"></i> </span></a></h5>
+                                                <!-- <p>
+                                                     <?php echo word_limiter($article["description"],5);?>
+                                                     <a href="<?php echo base_url(); ?>tentang/detail/<?php echo strtolower(str_replace(' ','-',preg_replace("/[^a-zA-Z0-9\s]/", "", $article['id_article']).'-'.$article['title'])); ?>" class="text-capitalize ">
+                                                        read more
+                                                        <span><i class="fa fa-angle-double-right"></i> </span>
+                                                    </a>          
+                                                </p> -->
                                             </div>
                                               <?php } ?>
                                         </div>    
@@ -75,10 +96,10 @@
                                          ?>
                                             <div class="recent-post">
                                                 <img src="<?php echo base_url(); ?>assets/foto/<?php echo $recent["foto"];?>" class="img-responsive center-block" alt="<?php echo $recent["title"];?>">
-                                                <h5 class="post-widget-heading"><a href="<?php echo base_url(); ?>article/detail/<?php echo strtolower(str_replace(' ','-',preg_replace("/[^a-zA-Z0-9\s]/", "", $recent['id_article']).'-'.$recent['title'])); ?>"><?php echo $recent["title"];?></a></h5>
+                                                <h5 class="post-widget-heading"><a href="<?php echo base_url(); ?>tentang/detail/<?php echo strtolower(str_replace(' ','-',preg_replace("/[^a-zA-Z0-9\s]/", "", $recent['id_article']).'-'.$recent['title'])); ?>"><?php echo $recent["title"];?></a></h5>
                                                 <p>
                                                     <?php echo word_limiter($recent["description"],5);?>
-                                                     <a href="<?php echo base_url(); ?>article/detail/<?php echo strtolower(str_replace(' ','-',preg_replace("/[^a-zA-Z0-9\s]/", "", $recent['id_article']).'-'.$recent['title'])); ?>" class="text-capitalize ">
+                                                     <a href="<?php echo base_url(); ?>tentang/detail/<?php echo strtolower(str_replace(' ','-',preg_replace("/[^a-zA-Z0-9\s]/", "", $recent['id_article']).'-'.$recent['title'])); ?>" class="text-capitalize ">
                                                         read more
                                                         <span><i class="fa fa-angle-double-right"></i> </span>
                                                     </a>   
@@ -97,7 +118,7 @@
                                         foreach($article_recent as $recents){
                                          ?>
                                          <div class="tags">
-                                   <a href="<?php echo base_url(); ?>article/detail/<?php echo strtolower(str_replace(' ','-',preg_replace("/[^a-zA-Z0-9\s]/", "", $recents['id_article']).'-'.$recents['title'])); ?>"><?php echo $recents["title"]; ?></a>
+                                    <a href=""><?php echo $recents["title"]; ?></a>
                                 </div>
                                 <?php } ?>
                             </div> <!-- /.tag-widget -->
@@ -111,11 +132,11 @@
                                         foreach($article_by_month as $archive){
                                          ?>
                                     <li>
-                                        <a href="<?php echo base_url(); ?>article/archive/<?php echo $archive["bulannya"]."/".$archive["tahunnya"]; ?>">
+                                        <a href="<?php echo base_url(); ?>article/archive/<?php echo $archive["bulan"]."/".$archive["tahun"]; ?>">
                     <i class="fa fa-angle-double-right pr-10">
                     </i>
                    <?php 
-                    $bulan = $archive["bulannya"]."-".$archive["tahunnya"]; 
+                    $bulan = $archive["bulan"]."-".$archive["tahun"]; 
                    echo $bulan; ?>
                   </a>
                                     </li>

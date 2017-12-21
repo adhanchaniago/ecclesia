@@ -18,11 +18,12 @@ class Profil extends CI_Controller {
 	public function index()
 	{	
 		$data["title"] = "ARTICLE";
-		$data['faq'] = $this->khotbah_model->Get_show_faq()->result_array();
-		$data['category_catalog'] = $this->welcome_model->category_catalog()->result_array();
-      		$data['article'] = $this->welcome_model->show_article()->result_array();      
-      		$data['article_recent'] = $this->welcome_model->show_article_recent()->result_array();  
-		$data['profil'] = $this->welcome_model->profil()->result_array();
+		 $data['article_by_month'] = $this->welcome_model->show_article_by_month()->result_array();        
+                    $data['faq'] = $this->khotbah_model->Get_show_faq()->result_array();
+                    $data['category_catalog'] = $this->welcome_model->category_catalog()->result_array();
+                    $data['article'] = $this->welcome_model->show_article()->result_array();        
+                    $data['article_recent'] = $this->welcome_model->show_article_recent()->result_array();
+                    $data['profil'] = $this->welcome_model->profil()->result_array();
 		$data["main_template"] = "profil";
 		$this->load->view('Welcome_template',$data);
 	}

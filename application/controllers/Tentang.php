@@ -17,9 +17,9 @@ class Tentang extends CI_Controller {
 	}
 	public function index($id_category)
 	{	
-                $data['faq'] = $this->khotbah_model->Get_show_faq()->result_array();
+        $data['faq'] = $this->khotbah_model->Get_show_faq()->result_array();
         $data['article_recent'] = $this->welcome_model->show_article_recent()->result_array();
-	$config['base_url'] = site_url('catalog/index/'.$id_category);
+        $config['base_url'] = site_url('catalog/index/'.$id_category);
         $config['total_rows'] = $this->db->select("*")->from("catalog")->where("id_category=$id_category and status=1")->count_all_results('');
         $config['per_page'] = "2";
         $config["uri_segment"] = 4;
@@ -48,8 +48,9 @@ class Tentang extends CI_Controller {
         $data['article_catalog'] = $this->welcome_model->get_catalog_list($id_category,$config["per_page"], $data['page']);   
         $data['category_catalog'] = $this->welcome_model->category_catalog()->result_array();
         $data['article'] = $this->welcome_model->show_article()->result_array();        
+        $data['article_by_month'] = $this->welcome_model->show_article_by_month()->result_array();        
         $data['pagination'] = $this->pagination->create_links();    
-		$data["title"] = "Catalog";
+		$data["title"] = "Tentang Ecclesia";
 		$data["main_template"] = "View_article_catalog";
 		$this->load->view('Welcome_template',$data);
 	}

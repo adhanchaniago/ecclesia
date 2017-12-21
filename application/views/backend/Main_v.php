@@ -6,9 +6,9 @@
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <title><?php echo $title?></title>
     <!-- Favicon-->
-    <link rel="shortcut icon" href="<?php echo base_url(); ?>assets/foto/amiklogo.png" type="image/x-icon">
     <!-- Google Fonts -->
-    
+          <link rel="shortcut icon" href="<?php echo base_url(); ?>assets/foto/ecclesialogo.jpg">
+
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
   <!--   <link href='<?php base_url(); ?>temp/source/font.css' rel='stylesheet' type='text/css'>

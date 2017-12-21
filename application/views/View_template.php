@@ -159,7 +159,7 @@
                                             <div class="row"> 
                                                 <div class="col-xs-6">
                                                   
-                                                    <span class="item-name"> <a href="<?php echo base_url(); ?>article/detail/<?php echo $data['id_article']; ?>" class="text-capitalize ">
+                                                    <span class="item-name"> <a href="<?php echo base_url(); ?>article/detail/<?php echo strtolower(str_replace(' ','-',preg_replace("/[^a-zA-Z0-9\s]/", "", $data['id_article']).'-'.$data['title'])); ?>" class="text-capitalize ">
                                                          <font color="black"><strong><u><?php echo $data["title"]; ?></u></strong></font>
                                                     </a>     
                                                     </br>
@@ -167,13 +167,10 @@
                                                         
 
                                                     </span>
-                                                    <span>
-                                                        <font color="black">
-                                                       <a href="<?php echo base_url(); ?>article/detail/<?php echo $data['id_article']; ?>" class="text-capitalize ">
-                                                         <font color="black"><strong><i>Selengkapnya ...<span><i class="fa fa-angle-double-right"></i> </span> </i></strong></font>
+                                              
+                                                       <a class="btn btn-primary" href="<?php echo base_url(); ?>article/detail/<?php echo strtolower(str_replace(' ','-',preg_replace("/[^a-zA-Z0-9\s]/", "", $data['id_article']).'-'.$data['title'])); ?>" class="text-capitalize ">
+                                                         <font color="gray"><font size="2" color="white">Selengkapnya<span><i class="fa fa-angle-double-right"></i> </span></font>
                                                     </a>    
-                                                      </font>
-                                                    </span>
                                                 </div>
                                                 <div class="col-xs-6">
                                                     <span class="like">
